@@ -14,7 +14,7 @@ function Stories() {
   console.log(userData?.photoUrl);
 
   return (
-    <div className="flex gap-3 pb-8">
+    <div className="flex gap-3 pb-8 lg:gap-[1.375rem]">
       <StoryItem avatar={user?.photoURL} />
       <StoryItem />
       <StoryItem />

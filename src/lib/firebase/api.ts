@@ -275,10 +275,10 @@ export async function getPostsById(
 
 export async function getPostById(postId: string) {
   const docRef = doc(db, "posts", postId);
-
-  const docSnap = await getDoc(docRef);
+  console.log("post gets calles");
   try {
     const docSnap = await getDoc(docRef);
+    console.log("docSnap", docSnap);
     if (docSnap.exists()) {
       return docSnap.data();
     } else {

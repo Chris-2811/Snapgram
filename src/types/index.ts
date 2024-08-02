@@ -8,4 +8,5 @@ export interface IPost {
   shares?: number;
   tags: string[];
   userId: string;
+  id?: string;
 }

@@ -10,11 +10,14 @@ import { useGetUserById } from "@/lib/react-query/queriesAndMutations";
 import { IPost } from "@/types";
 import { formatPostDate } from "@/lib/utils";
 import { useSwipeable } from "react-swipeable";
+import { useNavigate } from "react-router-dom";
 
 function PostCard({ post }: { post: IPost }) {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [activePhotoIndex, setActivePhotoIndex] = useState<number>(0);
   const [isCaptionExpanded, setIsCaptionExpanded] = useState<boolean>(false);
+
+  const navigate = useNavigate();
 
   if (!post || !post.userId) {
     return null;
@@ -87,6 +90,7 @@ function PostCard({ post }: { post: IPost }) {
         </div>
         {user?.uid === post.userId && (
           <img
+            onClick={() => navigate(`/edit-post/${post.id}`)}
             src="assets/icons/edit.svg"
             alt="edit"
             className="h-5 w-5 cursor-pointer"
@@ -138,6 +142,7 @@ function PostCard({ post }: { post: IPost }) {
         {post.photoUrls.length > 1 &&
           post.photoUrls.map((photoUrl, index) => (
             <div
+              key={index}
               onClick={() => setActivePhotoIndex(index)}
               className={`h-[0.6125rem] w-[0.6125rem] cursor-pointer rounded-full  ${index === activePhotoIndex ? "bg-white" : "bg-light-400"}`}
             ></div>

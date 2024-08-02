@@ -8,6 +8,8 @@ import UserCard from "@/components/shared/_main/UserCard";
 import { useInView } from "react-intersection-observer";
 import Sort from "@/components/ui/Sort";
 import Stories from "@/components/shared/_main/Stories";
+import TopCreators from "@/components/Home/TopCreators";
+import { HoverEffect } from "@/components/ui/card-hover-effect";
 
 function Home() {
   const {
@@ -32,12 +34,16 @@ function Home() {
     }
   }, [inView, hasNextPage]);
 
+  if (posts) {
+    console.log("posts", posts);
+  }
+
   const allUsers = users?.pages.flatMap((page) => page.map((user) => user));
 
   return (
-    <div className="lg:flex lg:flex-1">
-      <div className=" px-4 pt-[1.625rem] md:px-10 lg:px-[3.25rem] lg:pt-[3.75rem]  ">
-        <div className="lg:w-[600px] ">
+    <div className="grow lg:flex">
+      <div className="pt-custom-home px-4 pt-[1.625rem] md:px-10  lg:px-[3.25rem] lg:pt-[3.25rem] ">
+        <div className="w-[600px] ">
           <div>
             <Stories />
           </div>
@@ -71,16 +77,7 @@ function Home() {
           )}
         </div>
       </div>
-      <div className=" hidden px-6 pt-12 xl:block">
-        <h1 className="heading-md">Top Creators</h1>
-        <ul className="mt-10 grid grid-cols-2 gap-6">
-          {allUsers?.slice(0, 8).map((creator, index) => (
-            <li key={index}>
-              <UserCard creator={creator} />
-            </li>
-          ))}
-        </ul>
-      </div>
+      <TopCreators user={allUsers} />
     </div>
   );
 }

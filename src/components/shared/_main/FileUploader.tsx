@@ -1,8 +1,8 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { FileWithPath, useDropzone } from "react-dropzone";
 import { Button } from "@/components/ui/button";
 
-function FileUploader({ fieldChange }: any) {
+function FileUploader({ fieldChange, reset }: any) {
   const [file, setFile] = useState<File[]>([]);
   const [fileUrl, setFileUrl] = useState("");
 
@@ -22,16 +22,25 @@ function FileUploader({ fieldChange }: any) {
     },
   });
 
+  useEffect(() => {
+    console.log("useEffect called with reset:", reset);
+    if (reset) {
+      setFile([]);
+      setFileUrl("");
+      fieldChange(null);
+    }
+  }, [reset, fieldChange]);
+
   return (
     <div
       {...getRootProps()}
-      className="flex cursor-pointer  flex-col items-center justify-center rounded-[14px] bg-dark-300"
+      className="bg-dark-350 flex w-full cursor-pointer flex-col items-center justify-center rounded-[14px]"
     >
       <input {...getInputProps()} className="cursor-pointer" />
       {fileUrl ? (
         <div className="py-12">
-          <div className="flex w-full flex-1 justify-center p-5 lg:p-10">
-            <img src={fileUrl} alt="" />
+          <div className="flex w-full flex-1 justify-center p-5 ">
+            <img src={fileUrl} alt="" className="max-h-[200px] rounded-lg" />
           </div>
           <p className="text-center text-light-400">
             Click or drag photo to replace

@@ -9,9 +9,11 @@ import { auth } from "@/lib/firebase/firebase";
 import { useNavigate } from "react-router-dom";
 import { setDoc, doc, serverTimestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase/firebase";
+import { useToast } from "@/components/ui/use-toast";
 
 function OAuth() {
   const navigate = useNavigate();
+  const { toast } = useToast();
 
   async function onGoogleClick() {
     try {
@@ -30,6 +32,10 @@ function OAuth() {
       });
 
       navigate("/");
+      toast({
+        title: "Successfully signed in!",
+        description: "Friday, February 10, 2023 at 5:57 PM",
+      });
     } catch (error) {}
   }
 

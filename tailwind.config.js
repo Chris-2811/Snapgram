@@ -28,6 +28,7 @@ module.exports = {
     extend: {
       screens: {
         xs: "480px",
+        "2xl": "1400px",
       },
       colors: {
         primary: "hsl(244, 100%, 75%)",
@@ -36,6 +37,7 @@ module.exports = {
         "dark-200": "hsl(240, 5%, 4%)",
         "dark-300": "hsl(240, 6%, 7%)",
         "dark-400": "hsl(240, 5%, 13%)",
+        "dark-500": "hsl(240, 5%, 20%)",
         "light-100": "hsl(0, 0%, 100%)",
         "light-200": "hsl(0, 0%, 94%)",
         "light-300": "hsl(240, 19%, 55%)",

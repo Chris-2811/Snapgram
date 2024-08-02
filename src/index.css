@@ -25,8 +25,8 @@
   }
 
   /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-  ul[role='list'],
-  ol[role='list'] {
+  ul[role="list"],
+  ol[role="list"] {
     list-style: none;
   }
 
@@ -41,7 +41,7 @@
   h2,
   h3,
   h4 {
-    @apply tracking-tighter leading-[1.4];
+    @apply leading-[1.4] tracking-tighter;
   }
 
   /* Balance text wrapping on headings */
@@ -107,8 +107,8 @@
     -webkit-text-fill-color: #fff !important;
   }
 
-  input[type='number']::-webkit-inner-spin-button,
-  input[type='number']::-webkit-outer-spin-button {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
@@ -116,7 +116,7 @@
 
 @layer utilities {
   .invert-white {
-    @apply invert brightness-0 transition;
+    @apply brightness-0 invert transition;
   }
 
   /* Typography */

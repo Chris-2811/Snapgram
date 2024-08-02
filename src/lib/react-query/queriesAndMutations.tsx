@@ -22,6 +22,7 @@ import {
   getPostsByIds,
   getInfiniteReels,
   getReelsByUserId,
+  getPostById,
 } from "../firebase/api";
 import { QUERY_KEYS } from "@/lib/react-query/queryKeys";
 
@@ -241,7 +242,7 @@ export const useGetPostsByIds = (userIds: string[]) => {
 export const useGetPostById = (postId: string) => {
   return useQuery({
     queryKey: [QUERY_KEYS.GET_POST_BY_ID],
-    queryFn: () => getPostsById(postId),
+    queryFn: () => getPostById(postId),
     enabled: !!postId,
   });
 };
